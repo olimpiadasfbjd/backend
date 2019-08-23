@@ -1,6 +1,6 @@
 from django.urls import include, path
-from .views import *
+from backend.views import *
 
 urlpatterns = [
-    path('Data/',DataViewSet.as_view(),name='animal')
+    path('Data/',DataViewSet,name='animal')
 ]
