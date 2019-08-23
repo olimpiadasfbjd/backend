@@ -15,8 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from rest_framework.routers import SimpleRouter
+from backend.views import DataViewSet
+from django.conf.urls.static import static
+
+
+router = SimpleRouter()
+router.register(r'data', DataViewSet)
 
 urlpatterns = [
-    path('', include('backend.urls')),
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

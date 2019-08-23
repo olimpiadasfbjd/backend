@@ -1,6 +1,7 @@
 from django.db import models
 
 class Data(models.Model):
+    objects = models.Manager()
     tension = models.IntegerField()
     current = models.IntegerField()
     wind_speed = models.IntegerField()
